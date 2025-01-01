@@ -1,0 +1,79 @@
+[project]
+name = "python-template-rye"
+version = "0.1.0"
+description = "Template for Python projects"
+authors = [
+    { name = "Seppo Sahi", email = "seppo.sahi@gmail.com" }
+]
+dependencies = [
+    "pydantic~=2.10.2",
+    "loguru~=0.7.2"
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[project.scripts]
+"entrypoint" = "entrypoints:main"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pyright~=1.1.389",
+    "pytest~=8.3.3"
+]
+
+[tool.rye.scripts]
+"lint:format" = "rye format"
+"lint:lint" = "rye lint --fix"
+"lint:pyright" = "pyright"
+"lint:all" = { chain = ["lint:format", "lint:lint", "lint:pyright"] }
+"test" = { chain = ["lint:all", "pytest"] }
+"clean" = "rm -rf .pdm-build && rm -rf .venv"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+# list of rules here:
+# https://docs.astral.sh/ruff/rules/
+# select = [
+# 	"A",    # warn about shadowing built-ins
+# 	"E",    # style stuff, whitespaces
+# 	"F",    # important pyflakes lints
+# 	"I",    # import sorting
+# 	"N",    # naming
+# 	"T100", # breakpoints (probably don't want these in prod!)
+# ]
+# if you're feeling confident you can do:
+select = ["ALL"]
+# and then manually ignore annoying ones:
+ignore = [
+    "D203",
+    "D213",
+    "COM812", 
+    "ISC001",
+
+    "D100",
+    "D104",
+    "D102",     # Missing docstring in public method
+    "D107",     # Missing docstring in special method
+    "PT009",    # pytest-unittest-assertion
+]
+
+[tool.pyright]
+venvPath = "."          # rye installs the venv in the current dir
+venv = ".venv"          #       in a folder called `.venv`
+include = ["src/**/*.py"]
+pythonVersion = "3.12"  # if library, specify the _lowest_ you support
+
+[tool.pytest.ini_options]
+addopts = "-v -s"
+python_files = "*_test.py"
+testpaths = [
+    "src",
+]
