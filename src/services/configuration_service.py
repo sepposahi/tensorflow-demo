@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import os
-from typing import Literal, Self
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -22,7 +24,7 @@ class ConfigurationService:
         self.env = env
 
     @classmethod
-    def get_instance(cls, conf: dict[str, str] = environment) -> Self:
+    def get_instance(cls, conf: dict[str, str] = environment) -> ConfigurationService:
         if cls.__instance is None:
             cls.__instance = cls(Configuration.model_validate(conf))
 

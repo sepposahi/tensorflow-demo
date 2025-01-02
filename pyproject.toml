@@ -8,6 +8,7 @@ authors = [
 dependencies = [
     "pydantic~=2.10.2",
     "loguru~=0.7.2",
+    "dependency-injector~=4.44.0",
     "tensorflow~=2.18.0",
 ]
 readme = "README.md"
@@ -16,6 +17,7 @@ requires-python = ">= 3.12"
 [project.scripts]
 "entrypoint" = "entrypoints:main"
 "version" = "entrypoints:version"
+"linear-equation" = "entrypoints:linear_equation"
 
 [build-system]
 requires = ["pdm-backend"]

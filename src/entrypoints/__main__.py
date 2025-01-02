@@ -1,3 +1,3 @@
-from . import main
+from util.logger import get_logger
 
-main()
+get_logger().info("MAIN")
