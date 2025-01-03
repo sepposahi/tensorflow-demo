@@ -1,14 +1,13 @@
 import tensorflow as tf
-from dependency_injector.wiring import Provide, inject
 
-import services
 from containers import Container
 from util.logger import get_logger, startup
 
 component = "tensorflow-demo"
 
 container = Container()
-container.wire(modules=['services.linear_equation_service'])
+container.wire(modules=["services.linear_equation_service"])
+
 
 def version() -> None:
     """Command line entrypoint that displays Tensorflow version."""
@@ -21,4 +20,4 @@ def linear_equation() -> None:
     startup(component)
     linear_equation_service = container.linear_equation_service()
 
-    linear_equation_service.say_foo()
+    linear_equation_service.temp()
