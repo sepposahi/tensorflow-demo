@@ -19,6 +19,7 @@ requires-python = ">= 3.12"
 "entrypoint" = "entrypoints:main"
 "version" = "entrypoints:version"
 "linear-equation" = "entrypoints:linear_equation"
+"chapter2" = "entrypoints:chapter2"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -69,6 +70,7 @@ ignore = [
     "D107",     # Missing docstring in special method
     "PT009",    # pytest-unittest-assertion
 ]
+dummy-variable-rgx = "^_$"
 
 [tool.pyright]
 venvPath = "."          # rye installs the venv in the current dir

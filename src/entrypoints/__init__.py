@@ -1,6 +1,7 @@
 import tensorflow as tf
 
 from containers import Container
+from services.chapter2_example_service import StopTrainingCallback
 from util.logger import get_logger, startup
 
 component = "tensorflow-demo"
@@ -21,3 +22,10 @@ def linear_equation() -> None:
     linear_equation_service = container.linear_equation_service()
 
     linear_equation_service.temp()
+
+
+def chapter2() -> None:
+    """Entrypoint that runs Chapter 2 example code."""
+    startup(component)
+    service = container.chapter2_example_service()
+    service.example(callback=StopTrainingCallback())
