@@ -71,6 +71,8 @@ optree==0.13.1
 packaging==24.2
     # via keras
     # via tensorflow
+pillow==11.1.0
+    # via tensorflow-demo
 protobuf==4.25.5
     # via tensorboard
     # via tensorflow

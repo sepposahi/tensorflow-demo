@@ -14,7 +14,7 @@ class StopTrainingCallback(keras.callbacks.Callback):
         accuracy = logs.get("accuracy") if logs else None
         if accuracy and accuracy > self.desired_accuracy and self.model is not None:
             get_logger().info(
-                "Reached desired accuracy so cancelling training (epoch = {epoch}, accuracy = {accuracy})"
+                f"Reached desired accuracy so cancelling training (epoch = {epoch}, accuracy = {accuracy})"
             )
             self.model.stop_training = True
 

@@ -11,6 +11,7 @@ dependencies = [
     "dependency-injector~=4.44.0",
     "tensorflow~=2.16.1",
     "numpy~=1.26.4",
+    "pillow~=11.1.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.12"
@@ -20,6 +21,8 @@ requires-python = ">= 3.12"
 "version" = "entrypoints:version"
 "linear-equation" = "entrypoints:linear_equation"
 "chapter2" = "entrypoints:chapter2"
+"chapter3" = "entrypoints:chapter3"
+"chapter3-2" = "entrypoints:chapter3_2"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -29,7 +32,9 @@ build-backend = "pdm.backend"
 managed = true
 dev-dependencies = [
     "pyright~=1.1.389",
-    "pytest~=8.3.3"
+    "pytest~=8.3.3",
+    "pydot~=3.0.4",
+    "matplotlib~=3.10.0",
 ]
 
 [tool.rye.scripts]

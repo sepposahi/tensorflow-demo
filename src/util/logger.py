@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import sys
+import tensorflow as tf
+import keras
 
 import loguru
 from loguru import logger
@@ -38,7 +40,9 @@ def startup(component: str) -> None:
 
     """
     logger = get_logger()
-    logger.info("{component} starting", component=component)
+    logger.info(f"{component} starting")
+    logger.info(f"Tensorflow version: {tf.__version__}")
+    logger.info(f"Keras version: {keras.__version__}")
     configuration = ConfigurationService.get_instance().get_dict()
 
     for key in configuration:
